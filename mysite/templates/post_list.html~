@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+
+<h1>{{title}} is working</h1>
+<br><br>{% for object in object_list %}
+<a href="{{ object.get_absolute_url }}" >{{object.title}}</a><br>
+{{object.content}}<br>
+{{object.updated}}<br>
+{{object.timestamp}}<br>
+{{object.id}}<br>
+
+{% endfor %}

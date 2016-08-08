@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block head_title %}{{league.league}} | {{block.super}} {% endblock head_title %}
+
+
+{% block content %}
+
+<br><br>
+{{league.league}}<br>
+{{league.id}}<br>
+{% for team in league.teams.all %} {{team}}<br>{% endfor %}
+{{league.timestamp}}
+
+{% endblock content %}

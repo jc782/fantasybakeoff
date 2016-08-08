@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<br><br>
+{{instance.title}}<br>
+{{instance.content}}<br>
+{{instance.updated}}<br>
+{{instance.timestamp}}<br>
+{{instance.id}}<br>
+
+{% endblock content %}

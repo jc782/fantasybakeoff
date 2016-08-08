@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block head_title %}{{instance.team}} | {{block.super}} {% endblock head_title %}
+
+
+{% block content %}
+
+<br><br>
+{{instance.team}}<br>
+{{instance.winner}}<br>
+{{instance.second}}<br>
+{{instance.third}}<br>
+
+{% endblock content %}
