@@ -52,3 +52,6 @@ def post_delete(request, id=None):
 	messages.success(request,"Deleted")	
 
 	return redirect("posts:list")
+
+def howto(request):
+	return render(request, 'howto.html')

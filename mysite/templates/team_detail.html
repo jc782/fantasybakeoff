@@ -4,11 +4,29 @@
 
 
 {% block content %}
+<h2><br>{{Team.team}}<br></h2>
 
-<br><br>
-{{Team.team}}<br>
-{{Team.winner}}<br>
-{{Team.second}}<br>
-{{Team.third}}<br>
-
+<h4>Your current selection is shown below. Changes can be made until 8pm BST September 7th 2016.<br><br>
+Winner: {{Team.winner}}<br>
+Second: {{Team.second}}<br>
+Third: {{Team.third}}<br>
+Fourth: {{Team.fourth}}<br>
+Fifth: {{Team.fifth}}<br>
+Sixth: {{Team.sixth}}<br>
+Seventh: {{Team.seventh}}<br>
+Eighth: {{Team.eighth}}<br>
+Ninth: {{Team.nineth}}<br>
+Tenth: {{Team.tenth}}<br>
+<br></h4>
+<h3>Score: {{Score}}</h3><br><br>
+To edit your team click <a href="{% url 'fbo:update' %}">here</a>
+<br>
+Your current leagues are:
+<br>{% for league in Leagues %}
+<a href="{{ league.get_absolute_url }}" >{{league.league}}</a><br>
+{% endfor %}
+<br>
+To add your team to another league click <a href="{% url 'fbo:leagueadd' %}"> here</a>.
+<br>
+Or to create your own league click <a href="{% url 'fbo:createLeague' %}"> here</a>.
 {% endblock content %}

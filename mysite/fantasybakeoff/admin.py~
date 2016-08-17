@@ -9,7 +9,7 @@ class TeamAdmin(admin.ModelAdmin):
 		model=Team
 
 class LeagueAdmin(admin.ModelAdmin):
-	#list_display = ["id","league","teams","timestamp"]
+	list_display = ["id","league","timestamp"]
 	class Meta:
 		model=League
 

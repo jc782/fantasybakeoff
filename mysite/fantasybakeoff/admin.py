@@ -4,7 +4,7 @@ from .models import Team, League
 # Register your models here.
 
 class TeamAdmin(admin.ModelAdmin):
-	list_display = ["user","team","score","timestamp"]
+	list_display = ["user","team","timestamp"]
 	class Meta:
 		model=Team
 

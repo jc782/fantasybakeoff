@@ -59,8 +59,8 @@ MIDDLEWARE_CLASSES = [
 
 ROOT_URLCONF = 'mysite.urls'
 
-LOGIN_REDIRECT_URL = '/posts/list'
-ACCOUNT_LOGOUT_REDIRECT_URL = '/posts/list'
+LOGIN_REDIRECT_URL = '/fbo/home'
+ACCOUNT_LOGOUT_REDIRECT_URL = '/fbo/home'
 
 TEMPLATES = [
     {

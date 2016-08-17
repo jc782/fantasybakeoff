@@ -1,15 +1,33 @@
 from django import forms
-from .models import Team
+from .models import Team, League
 
 class TeamForm(forms.ModelForm):
 	class Meta:
 		model = Team
-		fields = ["team","winner","second","third"]
+		fields = ["team","winner","second","third","fourth","fifth","sixth","seventh","eighth","nineth","tenth"]
 
+	def clean(self):
+		form_data = self.cleaned_data
+		a = [form_data['winner']]
+		a.append(form_data['second'])
+		a.append(form_data['third'])
+		a.append(form_data['fourth'])
+		
+		temp = set(a)
+		result = {}
+		for i in temp:
+			result[i]=a.count(i)
+		if any(v>1 for v in result.itervalues()):
+			self._errors["winner"]=["Repeated constestants - please enter a valid set"]		
+		return form_data
 
 class LeagueForm(forms.ModelForm):
 	class Meta:
 		model = League
 		fields = ["league"]
 
+class LeagueAdd(forms.Form):
+	leaguenumber = forms.CharField(label='League Number', max_length=8)
+	class Meta:
+		fields=["leaguenumber"]
 

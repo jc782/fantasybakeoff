@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<p>Why not play along with the fantasy bakeoff and guess who will be the 2016 champion of the tent! Everything you need to know about playing is on this page.</p>
+<p>The concept is simple. Watch two episodes and decide who you think will take eternal bakeoff glory, and who might be heading home next week. Using this information and your bakeoff intuition enter a team into the Fantasy Bakeoff. The remaining 10 candidates must be ranked.</p>
+<p>Your 'fantasy team' order will be compared to the order Mary and Paul send the bakers home. A score (0-100%) will determine how well your ranking matches the final order.</p>
+<p>Play along on your own, or setup/join a league to play against friends</p>
+
+{% endblock content %}

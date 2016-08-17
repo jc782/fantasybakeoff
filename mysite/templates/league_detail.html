@@ -4,11 +4,11 @@
 
 
 {% block content %}
-
-<br><br>
-{{league.league}}<br>
-{{league.id}}<br>
-{% for team in league.teams.all %} {{team}}<br>{% endfor %}
+<h3>{{league.league}}</h3><br>
+To get others to join your league share this league number {{league.id}}<br>
+League Entries<br>
+{% for team in league.teams.all %} 
+{{team}}<br>{% endfor %}
 {{league.timestamp}}
 
 {% endblock content %}
