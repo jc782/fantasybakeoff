@@ -22,7 +22,7 @@ def team_detail(request):
 		try:		
 			t = Team.objects.get(user=request.user) # access their team profile
 		except:
-			t= None
+			t= 0
 		if t:		
 			league = t.league_set.all()		
 			context = {'Team':t , 'Score':t.get_score(),'Leagues':league}

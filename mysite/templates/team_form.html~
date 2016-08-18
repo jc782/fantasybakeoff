@@ -1,7 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Form</h1>
+<h2>Enter your team</h2>
+<p>Choose a team name, select the bakers in your chosen order, then hit submit!<br>
+Need a reminder of the contestants - <a HREF="www.thegreatbritishbakeoff.co.uk/bakers/series-7/" target="_blank">here's a quick reminder</a>.
+
+</p>
+
 <form method='POST' action=''>
 {% csrf_token %}
 {{ form.as_p }}

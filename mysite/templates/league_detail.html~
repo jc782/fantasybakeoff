@@ -5,9 +5,26 @@
 
 {% block content %}
 <h3>{{league.league}}</h3><br>
-To get others to join your league share this league number {{league.id}}<br>
-Entered in the league are<br>
-{% for team in league.teams.all %} {{team}}<br>{% endfor %}
+<h4>Share this league number {{league.id}}</h4><br>
+<table class="table">
+	<thead>
+		<tr>
+			<th>Team</th>
+			<th>Contestant</th>
+			<th>Score</th>
+		</tr>
+	</thead>
+	<tbody>
+{% league.teams.all.order_by(get_score) %}
+{% for team in league.teams.all %} 
+		<tr>
+			<td>{{team}}</td>
+			<td>{{team.user.first_name}} {{team.user.last_name}}</td>
+			<td>{{ team.get_score }}</td>
+		</tr>
+{% endfor %}
+	</tbody>
+</table>
 {{league.timestamp}}
 
 {% endblock content %}

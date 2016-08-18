@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>League Form</h1>
+<h2>Create your own league</h2>
+<p>Simply choose a name for your league. A league number will be assigned, by sharing this code others can join your league</p>
 <form method='POST' action=''>
 {% csrf_token %}
 {{ form.as_p }}

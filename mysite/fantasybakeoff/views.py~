@@ -19,12 +19,16 @@ def team_create(request):
 
 def team_detail(request):
 	if request.user.is_authenticated():	# check the user is logged in			
-		t = Team.objects.get(user=request.user) # access their team profile
-		league = t.league_set.all()		
-		context = {'Team':t , 'Score':t.get_score(),'Leagues':league}
-		return render(request,'team_detail.html',context) # render the details of their team profile
-	else:
-		return render(request,'howto.html') #no context, effectively a static page
+		try:		
+			t = Team.objects.get(user=request.user) # access their team profile
+		except:
+			t= None
+		if t:		
+			league = t.league_set.all()		
+			context = {'Team':t , 'Score':t.get_score(),'Leagues':league}
+			return render(request,'team_detail.html',context) # render the details of their team profile
+		else:
+			return render(request,'howto.html') #no context, effectively a static page
 
 
 # allow the user to update their team if necessary

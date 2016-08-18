@@ -1,24 +1,35 @@
 {% extends 'base.html' %}
 
-{% block head_title %}{{Team.user}} | {{block.super}} {% endblock head_title %}
+{% block head_title %}{{Team.user.first_name}} | {{block.super}} {% endblock head_title %}
 
 
 {% block content %}
 <h2><br>{{Team.team}}<br></h2>
 
-<h4>Your current selection is shown below. Changes can be made until 8pm BST September 7th 2016.
-Winner: {{Team.winner}}<br>
-Second: {{Team.second}}<br>
-Third: {{Team.third}}<br>
-Fourth: {{Team.fourth}}<br>
-Fifth: {{Team.fifth}}<br>
-Sixth: {{Team.sixth}}<br>
-Seventh: {{Team.seventh}}<br>
-Eighth: {{Team.eighth}}<br>
-Ninth: {{Team.nineth}}<br>
-Tenth: {{Team.tenth}}<br>
-<br></h4>
-<h3>Score: {{Score}}</h3><br><br>
+<h4>Your current selection is shown below. Changes can be made until 8pm BST September 7th 2016.<br></h4>
+<table class="table text-left table-condensed">
+	<thead>
+		<tr>
+			<th>Position</th>
+			<th>My Prediction</th>
+			<th>Result</th>
+		<tr>
+	</thead>
+	<tbody>
+		<tr><td>Winner</td><td> {{Team.winner}}</td><td>tbc</td><tr>
+		<tr><td>Second</td><td> {{Team.second}}</td><td>tbc</td><tr>
+		<tr><td>Third</td><td> {{Team.third}}</td><td>tbc</td><tr>
+		<tr><td>Fourth</td><td> {{Team.fourth}}</td><td>tbc</td><tr>
+		<tr><td>Fifth</td><td> {{Team.fifth}}</td><td>tbc</td><tr>
+		<tr><td>Sixth</td><td> {{Team.sixth}}</td><td>tbc</td><tr>
+		<tr><td>Seventh</td><td> {{Team.seventh}}</td><td>tbc</td><tr>
+		<tr><td>Eighth</td><td> {{Team.eighth}}</td><td>tbc</td><tr>
+		<tr><td>Ninth</td><td> {{Team.nineth}}</td><td>tbc</td><tr>
+		<tr><td>Tenth</td><td> {{Team.tenth}}</td><td>tbc</td><tr>
+	</tbody>
+</table>
+<br><h4>
+Score: {{Score}}%<br><br>
 To edit your team click <a href="{% url 'fbo:update' %}">here</a>
 <br>
 Your current leagues are:
@@ -28,5 +39,7 @@ Your current leagues are:
 <br>
 To add your team to another league click <a href="{% url 'fbo:leagueadd' %}"> here</a>.
 <br>
-Or to create your own league click <a href="{% url 'fbo:createLeague' %}"> here</a>.
+Or to create your own league click <a href="{% url 'fbo:createLeague' %}"> here</a>.</h4>
+
+{% include "logout.html" %}
 {% endblock content %}

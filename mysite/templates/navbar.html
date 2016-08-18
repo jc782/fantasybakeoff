@@ -6,14 +6,14 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="{% url 'fbo:home' %}">The Fantasy Bakeoff</a>
+      <a class="navbar-brand" href="{% url 'fbo:base' %}">The Fantasy Bakeoff</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
 	<li><a href="{% url 'posts:howto' %}">How to play</a></li>        
-	<li><a href="{% url 'posts:list' %}">Blog</a></li>
+	<li><a href="{% url 'posts:list' %}">Updates</a></li>
         <li>{% if user.is_authenticated %}
-<a href="{% url 'fbo:home' %}">{{user.username}}'s Team</a>
+<a href="{% url 'fbo:home' %}">{{user.first_name}}'s Team</a>
 {% else %}
 {% include "login.html" %}
 {% endif %}</li>

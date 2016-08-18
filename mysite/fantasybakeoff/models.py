@@ -43,11 +43,21 @@ class Team(models.Model):
 		return self.team
 
 	def get_score(self):
-		CONTESTANT_RESULT = ['NA','NA','NA','NA','NA','NA','NA','NA','NA','NA']
-		#x1 = CONTESTANT_RESULT.index(self.winner) #zero indexed
-		#x2 = CONTESTANT_RESULT.index(self.second)
-		#x3 = CONTESTANT_RESULT.index(self.third)
-		score = 'Competition yet to begin'#x3+x2+x1
+		#spearmans rank on the contestant results.
+		CONTESTANT_RESULT = ['Selasi','Rav','Michael','Kate','Lee','Jane','Benjamina','Louise','Candice','Andrew']
+		x1 = CONTESTANT_RESULT.index(self.winner)
+		x2 = CONTESTANT_RESULT.index(self.second)-1
+		x3 = CONTESTANT_RESULT.index(self.third)-2 
+		x4 = CONTESTANT_RESULT.index(self.fourth)-3 
+		x5 = CONTESTANT_RESULT.index(self.fifth)-4
+		x6 = CONTESTANT_RESULT.index(self.sixth)-5
+		x7 = CONTESTANT_RESULT.index(self.seventh)-6 
+		x8 = CONTESTANT_RESULT.index(self.eighth)-7
+		x9 = CONTESTANT_RESULT.index(self.nineth)-8
+		x10= CONTESTANT_RESULT.index(self.tenth)-9
+				
+		score = int(100-6*(x1**2+x2**2+x3**2+x4**2+x5**2+x6**2+x7**2+x8**2+x9**2+x10**2)/19.8)	
+		#score = 'Competition yet to begin'		
 		return score
 
 	def get_absolute_url(self):
