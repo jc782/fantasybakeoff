@@ -4,7 +4,7 @@ from . import views
 
 urlpatterns = [
  url(r'^league/(?P<id>\d+)/$', views.league_view, name='detail'),
- url(r'^create/$', views.team_create, name='create'), #create the team
+ #url(r'^create/$', views.team_create, name='create'), #create the team
  url(r'^index/$', views.team_detail, name='home'), #main home function
  url(r'^home/$', views.homeview, name='base'), #main home function
  url(r'^edit/$', views.team_update, name='update'), #make team changes

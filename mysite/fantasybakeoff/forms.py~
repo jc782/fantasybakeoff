@@ -7,11 +7,17 @@ class TeamForm(forms.ModelForm):
 		fields = ["team","winner","second","third","fourth","fifth","sixth","seventh","eighth","nineth","tenth"]
 
 	def clean(self):
-		form_data = self.cleaned_data
+		form_data = self.cleaned_data #check if the entered set has any repeat values
 		a = [form_data['winner']]
 		a.append(form_data['second'])
 		a.append(form_data['third'])
 		a.append(form_data['fourth'])
+		a.append(form_data['fifth'])
+		a.append(form_data['sixth'])
+		a.append(form_data['seventh'])
+		a.append(form_data['eighth'])
+		a.append(form_data['nineth'])
+		a.append(form_data['tenth'])
 		
 		temp = set(a)
 		result = {}

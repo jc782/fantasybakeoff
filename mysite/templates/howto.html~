@@ -7,12 +7,7 @@
 <p>Your fantasy team will be compared to the order Mary and Paul send the bakers home. A score (0-100%) will determine how well you've correlated with the correct order.</p>
 <p>Play along on your own, or setup/join a league to play against friends</p>
 {% if user.is_authenticated %}
-{% if Team.objects.get(user=user).created %}
-
-<a href="{% url 'fbo:edit' %}">You've already entered a team, maybe you want to edit?</a>
-{% else %}
-<a href="{% url 'fbo:create' %}">Ready to get started - enter your team here</a>
-{% endif %}
+<a href="{% url 'fbo:edit' %}">Ready to get started - enter a team here</a>
 {% else %}
 {% include "login.html" %}
 {% endif %}

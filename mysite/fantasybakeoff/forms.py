@@ -4,7 +4,7 @@ from .models import Team, League
 class TeamForm(forms.ModelForm):
 	class Meta:
 		model = Team
-		fields = ["team","winner","second","third","fourth","fifth","sixth","seventh","eighth","nineth","tenth"]
+		fields = ["team","winner","second","third","fourth","fifth","sixth","seventh","eighth","ninth","tenth"]
 
 	def clean(self):
 		form_data = self.cleaned_data #check if the entered set has any repeat values
@@ -16,7 +16,7 @@ class TeamForm(forms.ModelForm):
 		a.append(form_data['sixth'])
 		a.append(form_data['seventh'])
 		a.append(form_data['eighth'])
-		a.append(form_data['nineth'])
+		a.append(form_data['ninth'])
 		a.append(form_data['tenth'])
 		
 		temp = set(a)

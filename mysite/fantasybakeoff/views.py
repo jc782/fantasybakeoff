@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from .models import Team, League
@@ -19,8 +20,9 @@ def team_create(request):
 
 def team_detail(request):
 	if request.user.is_authenticated():	# check the user is logged in			
+		usr = User.objects.get(email=request.user.email) #email is the primary key		
 		try:		
-			t = Team.objects.get(user=request.user) # access their team profile
+			t = Team.objects.get(user=usr) # access their team profile
 		except:
 			t= 0
 		if t:		
@@ -29,12 +31,22 @@ def team_detail(request):
 			return render(request,'team_detail.html',context) # render the details of their team profile
 		else:
 			return render(request,'howto.html') #no context, effectively a static page
+	else:
+		return render(request,'howto.html') #no context, effectively a static page
+		
 
 
 # allow the user to update their team if necessary
 def team_update(request):
-	team = Team.objects.get(user=request.user)	
-	form = TeamForm(request.POST or None, instance=team)
+	usr = User.objects.get(email=request.user.email) #email is the primary key		
+	try:		
+		team = Team.objects.get(user=usr) #
+	except:
+		team=0
+	if team==0:
+		form = TeamForm(request.POST or None)
+	else:
+		form = TeamForm(request.POST or None, instance=team)			
 	if form.is_valid():
 		instance = form.save(commit=False)
 		instance.created = True
@@ -73,7 +85,7 @@ def league_add(request):
 			if League.objects.filter(id=idx).exists():
 				obj = League.objects.get(id=idx)
 				context = {'league':obj}
-				team = Team.objects.get(user=request.user) #find the users team			 
+				team = Team.objects.get(id=request.user.id) #users team			 
 				obj.teams.add(team) # add the users team
 				return render(request, 'league_detail.html', context)
 			else:
