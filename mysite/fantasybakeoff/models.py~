@@ -7,8 +7,9 @@ from django.contrib.auth.models import User
 
 # Fantasy Bakeoff key models
 class Team(models.Model):
-	user      = models.OneToOneField(User.email, on_delete=models.CASCADE, primary_key=True)	
-	team      = models.CharField(max_length=100)
+	user      = models.OneToOneField(User, on_delete=models.CASCADE)	
+	email     = models.EmailField(max_length=150, primary_key=True)	
+	team      = models.CharField(max_length=100, verbose_name='Team Name')
 	timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
 	created   = models.BooleanField(default=True)	
 
@@ -66,7 +67,7 @@ class Team(models.Model):
 
 
 class League(models.Model):
-	league      = models.CharField(max_length=100)
+	league      = models.CharField(max_length=150, verbose_name='League Name')
 	teams       = models.ManyToManyField(Team)
 	timestamp   = models.DateTimeField(auto_now=False, auto_now_add=True)
 	

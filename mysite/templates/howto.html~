@@ -3,15 +3,17 @@
 {% block content %}
 <h3>Fantasy Bakeoff Rules</h3>
 <p>Why not play along with the fantasy bakeoff and guess who will be the 2016 champion of the tent! Everything you need to know about playing is on this page.</p>
-<p>The concept is simple. Watch two episodes and decide who you think will take eternal bakeoff glory, and who might be heading home next week. Using this information, and your bakeoff intuition, rank the remaining candidates on the Fantasy Bakeoff. This ranking is your 'team' </p>
-<p>Your fantasy team will be compared to the order Mary and Paul send the bakers home. A score (0-100%) will determine how well you've correlated with the correct order.</p>
+<p>The concept is simple. Watch the first two episodes and decide who you think will take eternal bakeoff glory, and who will be heading home next week. Take this and rank the remaining candidates on this website, the FantasyBakeoff. This is your Fantasy Bakeoff team.</p>
+<p>Your fantasy team will be compared to the order Mary and Paul send the bakers home. A score (0-100%)* will determine how well you've correlated with the correct order.</p>
 <p>Play along on your own, or setup/join a league to play against friends</p>
 {% if user.is_authenticated %}
-<a href="{% url 'fbo:edit' %}">Ready to get started - enter a team here</a>
+<!--<a href="{% url 'fbo:update' %}">Ready to get started - enter a team here</a>-->
+For now just watch the episodes, an email will be sent when we're ready to take entries.
 {% else %}
 {% include "login.html" %}
 {% endif %}
-
+<br>
+*Negative scores possible if you select the bakers who leave the tent within the first two weeks to be part of your team. 
 
 
 

@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 
-{% block head_title %}{{Team.user.first_name}} | {{block.super}} {% endblock head_title %}
+{% block head_title %}{{user.first_name}} | {{block.super}} {% endblock head_title %}
 
 
 {% block content %}
-<h2><br>{{Team.team}}<br></h2>
+<h2><br>{{user.Team.team}}<br></h2>
 
 <h4>Your current selection is shown below. Changes can be made until 8pm BST September 7th 2016.<br></h4>
 <table class="table text-left table-condensed">
@@ -29,7 +29,7 @@
 	</tbody>
 </table>
 <br><h4>
-Score: {{Score}}%<br><br>
+Score: {{Team.get_score }}%<br><br>
 To edit your team click <a href="{% url 'fbo:update' %}">here</a>
 <br>
 Your current leagues are:

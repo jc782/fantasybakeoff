@@ -7,8 +7,9 @@ from django.contrib.auth.models import User
 
 # Fantasy Bakeoff key models
 class Team(models.Model):
-	user      = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)	
-	team      = models.CharField(max_length=100)
+	user      = models.OneToOneField(User, on_delete=models.CASCADE)	
+	email     = models.EmailField(max_length=150, primary_key=True)	
+	team      = models.CharField(max_length=100, verbose_name='Team Name')
 	timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
 	created   = models.BooleanField(default=True)	
 
@@ -56,8 +57,8 @@ class Team(models.Model):
 		x9 = CONTESTANT_RESULT.index(self.ninth)-8
 		x10= CONTESTANT_RESULT.index(self.tenth)-9
 				
-		score = int(100-6*(x1**2+x2**2+x3**2+x4**2+x5**2+x6**2+x7**2+x8**2+x9**2+x10**2)/19.8)	
-		#score = 'Competition yet to begin'		
+		#score = int(100-6*(x1**2+x2**2+x3**2+x4**2+x5**2+x6**2+x7**2+x8**2+x9**2+x10**2)/19.8)	
+		score = 'Competition yet to begin'		
 		return score
 
 	def get_absolute_url(self):
@@ -66,7 +67,7 @@ class Team(models.Model):
 
 
 class League(models.Model):
-	league      = models.CharField(max_length=100)
+	league      = models.CharField(max_length=150, verbose_name='League Name')
 	teams       = models.ManyToManyField(Team)
 	timestamp   = models.DateTimeField(auto_now=False, auto_now_add=True)
 	

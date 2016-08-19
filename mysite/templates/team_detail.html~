@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 
-{% block head_title %}{{Team.user.first_name}} | {{block.super}} {% endblock head_title %}
+{% block head_title %}{{user.first_name}} | {{block.super}} {% endblock head_title %}
 
 
 {% block content %}
-<h2><br>{{Team.team}}<br></h2>
+<h2><br>{{user.Team.team}}<br></h2>
 
 <h4>Your current selection is shown below. Changes can be made until 8pm BST September 7th 2016.<br></h4>
 <table class="table text-left table-condensed">
@@ -17,19 +17,19 @@
 	</thead>
 	<tbody>
 		<tr><td>Winner</td><td> {{Team.winner}}</td><td>tbc</td><tr>
-		<tr><td>Second</td><td> {{Team.second}}</td><td>tbc</td><tr>
-		<tr><td>Third</td><td> {{Team.third}}</td><td>tbc</td><tr>
-		<tr><td>Fourth</td><td> {{Team.fourth}}</td><td>tbc</td><tr>
-		<tr><td>Fifth</td><td> {{Team.fifth}}</td><td>tbc</td><tr>
-		<tr><td>Sixth</td><td> {{Team.sixth}}</td><td>tbc</td><tr>
-		<tr><td>Seventh</td><td> {{Team.seventh}}</td><td>tbc</td><tr>
-		<tr><td>Eighth</td><td> {{Team.eighth}}</td><td>tbc</td><tr>
-		<tr><td>Ninth</td><td> {{Team.nineth}}</td><td>tbc</td><tr>
-		<tr><td>Tenth</td><td> {{Team.tenth}}</td><td>tbc</td><tr>
+		<tr><td>Second</td><td> {{user.Team.second}}</td><td>tbc</td><tr>
+		<tr><td>Third</td><td> {{user.Team.third}}</td><td>tbc</td><tr>
+		<tr><td>Fourth</td><td> {{user.Team.fourth}}</td><td>tbc</td><tr>
+		<tr><td>Fifth</td><td> {{user.Team.fifth}}</td><td>tbc</td><tr>
+		<tr><td>Sixth</td><td> {{user.Team.sixth}}</td><td>tbc</td><tr>
+		<tr><td>Seventh</td><td> {{user.Team.seventh}}</td><td>tbc</td><tr>
+		<tr><td>Eighth</td><td> {{user.Team.eighth}}</td><td>tbc</td><tr>
+		<tr><td>Ninth</td><td> {{user.Team.ninth}}</td><td>tbc</td><tr>
+		<tr><td>Tenth</td><td> {{user.Team.tenth}}</td><td>tbc</td><tr>
 	</tbody>
 </table>
 <br><h4>
-Score: {{Score}}%<br><br>
+Score: {{user.Team.get_score }}%<br><br>
 To edit your team click <a href="{% url 'fbo:update' %}">here</a>
 <br>
 Your current leagues are:

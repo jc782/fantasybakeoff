@@ -21,9 +21,6 @@
 </div>
 
 <div class="container-fluid text-center">
-  <h3>The Fantasy Bakeoff</h3>
-  <p><em>Speculating bakes freezergate 2k14</em></p>
-  <br>
   <div class="row">
     <div class="col-sm-2">
        </div>
@@ -36,7 +33,7 @@
 
 
 <footer class="container-fluid text-center">
-  <p>Website designed by Josh Carr.</p>
+  <p>Website designed by J Carr</p>
 </footer>
 
 <script>

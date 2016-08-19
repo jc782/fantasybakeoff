@@ -20,9 +20,11 @@ def team_create(request):
 
 def team_detail(request):
 	if request.user.is_authenticated():	# check the user is logged in			
-		usr = User.objects.get(email=request.user.email) #email is the primary key		
+		email = request.user.email #email is the primary key		
+		print email		
 		try:		
-			t = Team.objects.get(user=usr) # access their team profile
+			t = Team.objects.get(email=email) # access their team profile
+			print t		
 		except:
 			t= 0
 		if t:		
@@ -38,9 +40,10 @@ def team_detail(request):
 
 # allow the user to update their team if necessary
 def team_update(request):
-	usr = User.objects.get(email=request.user.email) #email is the primary key		
+	email = request.user.email #email is the primary key
+	print email		
 	try:		
-		team = Team.objects.get(user=usr) #
+		team = Team.objects.get(email=email) #
 	except:
 		team=0
 	if team==0:
@@ -49,7 +52,9 @@ def team_update(request):
 		form = TeamForm(request.POST or None, instance=team)			
 	if form.is_valid():
 		instance = form.save(commit=False)
-		instance.created = True
+		instance.created = True		
+		instance.email = request.user.email		
+		instance.user = request.user		
 		instance.save()
 		messages.success(request,'Successfully Created')
 		return HttpResponseRedirect(instance.get_absolute_url())
