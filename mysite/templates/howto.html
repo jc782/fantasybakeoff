@@ -1,14 +1,22 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h3>Fantasy Bakeoff Rules</h3>
-<p>Why not play along with the fantasy bakeoff and guess who will be the 2016 champion of the tent! Everything you need to know about playing is on this page.</p>
-<p>The concept is simple. Watch the first two episodes and decide who you think will take eternal bakeoff glory, and who will be heading home next week. Take this and rank the remaining candidates on this website, the FantasyBakeoff. This is your Fantasy Bakeoff team.</p>
+<h2>How to play</h2>
+<br>
+<b>The concept</b>
+<p>It's super simple; you watch the bakeoff and decide on what order you think the bakers are going to be sent home. After the second episode you enter your team, which is simply a ranking of the remaining bakers.</p>
 <p>Your fantasy team will be compared to the order Mary and Paul send the bakers home. A score (0-100%)* will determine how well you've correlated with the correct order.</p>
-<p>Play along on your own, or setup/join a league to play against friends</p>
+<br>
+<b>The Rules</b>
+<p>It's pretty self explanatory. But incase of rogue decisions by Paul and Mary, the 'order' the bakers are sent home will be determined by the Wikipedia Bake Off series 7 elimination table order, as determined <a href="https://en.wikipedia.org/wiki/The_Great_British_Bake_Off_(series_7)" target="_blank">here.</a></p>
+
+<br>
+<b>The Prize</b><p>
+Correct prediction of the entire order will merit a prize. Prize tbc.</p>
+
+<p>You can setup and join leagues to play against friends.</p>
 {% if user.is_authenticated %}
-<!--<a href="{% url 'fbo:update' %}">Ready to get started - enter a team here</a>-->
-<b>For now just watch the episodes, an email will be sent when we're ready to take entries.</b>
+<a href="{% url 'fbo:update' %}">Ready to get started - enter a team here</a>
 {% else %}
 {% include "login.html" %}
 {% endif %}

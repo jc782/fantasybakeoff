@@ -5,7 +5,7 @@
 
 {% block content %}
 <h3>{{league.league}}</h3><br>
-<h4>Share this league number {{league.id}}</h4><br>
+<h4>Share this league number {{league.id + 123}}</h4><br>
 <table class="table">
 	<thead>
 		<tr>
@@ -15,7 +15,6 @@
 		</tr>
 	</thead>
 	<tbody>
-{% league.teams.all.order_by(get_score) %}
 {% for team in league.teams.all %} 
 		<tr>
 			<td>{{team}}</td>

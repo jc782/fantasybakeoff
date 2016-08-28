@@ -75,4 +75,4 @@ class League(models.Model):
 		return self.league
 
 	def get_absolute_url(self):
-		return "/fbo/league/%s/" %self.id
+		return "league/%s/" %self.id

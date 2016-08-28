@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Uh oh, you can't do that yet </h2>
+<p>{% if user.is_authenticated %}
+To create or join a league you'll need to enter your team first. You can do that <a href="{% url 'fbo:update' %}">here</a>.
+{% else %}
+To create or join a league you'll need to first login and create a team. <br>
+{% include "login.html" %}
+{% endif %}
+</p>
+{% endblock content %}

@@ -2,11 +2,12 @@
 
 
 {% block content %}
-<h3>League Form</h3>
+<h2>Add yourself to another league</h2>
+<p>Just enter the league code that's been shared with you and hit enter league!</p>
 <form method='POST' action=''>
 {% csrf_token %}
 {{ form.as_p }}
-<input type="submit" value="Find League" />
+<input type="submit" value="Enter League" />
 </form>
 <br>
 

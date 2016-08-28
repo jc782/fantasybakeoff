@@ -57,8 +57,8 @@ class Team(models.Model):
 		x9 = CONTESTANT_RESULT.index(self.ninth)-8
 		x10= CONTESTANT_RESULT.index(self.tenth)-9
 				
-		score = int(100-6*(x1**2+x2**2+x3**2+x4**2+x5**2+x6**2+x7**2+x8**2+x9**2+x10**2)/19.8)	
-		#score = 'Competition yet to begin'		
+		#score = int(100-6*(x1**2+x2**2+x3**2+x4**2+x5**2+x6**2+x7**2+x8**2+x9**2+x10**2)/19.8)	
+		score = 'Competition yet to begin'		
 		return score
 
 	def get_absolute_url(self):
@@ -75,4 +75,4 @@ class League(models.Model):
 		return self.league
 
 	def get_absolute_url(self):
-		return "/fbo/league/%s/" %self.id
+		return "fbo/league/%s/" %self.id

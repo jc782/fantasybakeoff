@@ -69,38 +69,58 @@ def league_view(request, id=None):
 
 def league_create(request):
 	if request.user.is_authenticated():	
-		form = LeagueForm(request.POST or None)
-		if form.is_valid():
-			instance = form.save(commit=False)
-			instance.save()
-			instance.teams.add(Team.objects.get(user=request.user)) #add initial user 
-			instance.save()
-			messages.success(request,'Successfully Created')
-			return HttpResponseRedirect(instance.get_absolute_url())
-		context = {'form':form,}	
-		return render(request,'league_form.html',context)	
+		email = request.user.email
+		try:		
+			team = Team.objects.get(email=email) 
+		except:
+			team=0		
+		
+		if team == 0: 
+			return render(request, 'leaguelogin.html',{})
+		else:			
+			form = LeagueForm(request.POST or None)
+			if form.is_valid():
+				instance = form.save(commit=False)
+				instance.save()
+				instance.teams.add(Team.objects.get(user=request.user)) #add initial user 
+				instance.save()
+				messages.success(request,'Successfully Created')
+				return HttpResponseRedirect(instance.get_absolute_url())
+			context = {'form':form,}	
+			return render(request,'league_form.html',context)	
 	else:
-		return HttpResponse('Must be logged in to create league')
+		return render(request,'leaguelogin.html',context)
 
 def league_add(request):
 	if request.user.is_authenticated():	
-		form = LeagueAdd(request.POST or None)
-		if form.is_valid():
-			idx = request.POST.get('leaguenumber')
-			if League.objects.filter(id=idx).exists():
-				obj = League.objects.get(id=idx)
-				context = {'league':obj}
-				team = Team.objects.get(id=request.user.id) #users team			 
-				obj.teams.add(team) # add the users team
-				return render(request, 'league_detail.html', context)
-			else:
-				err_ms  = 'League does not exist, search another league.' 
-				context = {'form':form,'league': err_ms}
-				return render(request, 'league_add.html', context) 
-			league = League.objects.get(id=idx) # find the league from the request
-			league.teams.add(team) # add the users team
-			return render(request, 'league_detail.html', {'league':league}) 
-	return render(request, 'league_add.html', {'form':form})
+		email = request.user.email
+		try:		
+			team = Team.objects.get(email=email) 
+		except:
+			team=0					
+		
+		if team != 0:
+			form = LeagueAdd(request.POST or None)
+			if form.is_valid():
+				idx = request.POST.get('leaguenumber')
+				if League.objects.filter(id=idx).exists():
+					obj = League.objects.get(id=idx)
+					context = {'league':obj}
+					email = request.user.email
+					team = Team.objects.get(email=email) 			
+					obj.teams.add(team) # add the users team
+					return render(request, 'league_detail.html', context)
+				else:
+					err_ms  = 'League does not exist, search another league.' 
+					context = {'form':form,'league': err_ms}
+					return render(request, 'league_add.html', context) 
+				league = League.objects.get(id=idx) # find the league from the request
+				league.teams.add(team) # add the users team
+				return render(request, 'league_detail.html', {'league':league}) 
+		else:
+			return render(request, 'leaguelogin.html', {}) 
+		form = LeagueAdd(request.POST or None)		
+		return render(request, 'league_add.html', {'form':form})
 
 
 def homeview(request):
